@@ -6,7 +6,8 @@ class APODImage extends React.Component {
 	render() {
 		console.log(this.props);
 		const data = this.props.data;
-		let width = this.props.isFullSize ? this.props.size.width : this.props.windowSize.width*.35;
+		let drawWidth = this.props.windowSize.width >= 1000 ? this.props.size.width*.35 : this.props.windowSize.width * .9;
+		let width = this.props.isFullSize ? this.props.size.width : drawWidth;
 		return <a href={data.hdurl} className="APOD-img-link" style={{width: width+'px',}}><img className="APOD-img" src={data.url} alt={data.title} width={width+'px'} /></a>;
 	}
 
@@ -21,6 +22,10 @@ class APODContent extends React.Component {
 			imageIsLoaded: false,
 			smallImageSize: halfSize,
 			imageSize: {
+				width: null,
+				height: null,
+			},
+			drawSize: {
 				width: halfSize,
 				height: null,
 			},
@@ -44,7 +49,7 @@ class APODContent extends React.Component {
 		} else {
 			setTimeout( () => this.componentDidMount() , 300);
 		}
-		window.addEventListener("resize", () => this.updateDimensions() );
+		//window.addEventListener("resize", () => this.updateDimensions() );
 	}
 
 	componentWillUnmount() {
@@ -60,13 +65,29 @@ class APODContent extends React.Component {
 		});
 	}
 
+	computeDrawSize() {
+		if(this.props.windowSize.width < 1000) {
+			this.setState({
+				drawSize: {
+					width: this.props.windowSize.width * .9,
+				},
+			});
+		} else {
+			this.setState({
+				drawSize: {
+					width: this.props.windowSize.width * .35,
+				},
+			});
+		}
+	}
+
 	render() {
 		//console.log(this.props.windowSize.width);
 		//console.log(this.state.imageSize);
 		let data = this.props.data;
 		if(data) {
 			return <div className="APOD-content">
-				<APODImage data={data} isFullSize={this.props.isImageFullSize} size={this.state.imageSize} windowSize={this.props.windowSize} />
+				<APODImage data={data} isFullSize={this.props.isImageFullSize} size={this.state.imageSize} drawSize={this.state.drawSize} windowSize={this.props.windowSize} />
 				<div className="APOD-explanation">
 					<header>
 						<h3>{data.title}</h3>

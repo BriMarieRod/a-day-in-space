@@ -29,7 +29,7 @@
   align-items: flex-start;
 }
 
-.APO-img-link {
+.APOD-img-link {
   flex-shrink: 0;
 }
 
@@ -42,4 +42,16 @@
 
 .APOD-explanation header {
   padding-bottom: 1em;
+}
+
+@media(max-width: 1000px) {
+  .APOD-content {
+    flex-wrap: wrap;
+  }
+  .APOD-img-link {
+    padding-bottom: 1em;
+  }
+  .APOD-explanation {
+    margin-left: 0;
+  }
 }
