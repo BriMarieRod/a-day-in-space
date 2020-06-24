@@ -1,0 +1,45 @@
+.App {
+  color: white;
+}
+
+.App-header {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  background-color: black;
+  text-align: center;
+}
+
+.APOD {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: midnightblue;
+}
+
+.APOD-header {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.APOD-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.APO-img-link {
+  flex-shrink: 0;
+}
+
+.APOD-explanation {
+  margin-left: 2em;
+  padding: 1em;
+  background-color: black;
+  border-radius: 1em;
+}
+
+.APOD-explanation header {
+  padding-bottom: 1em;
+}
