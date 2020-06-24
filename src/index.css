@@ -2,13 +2,14 @@
 
 TABLE OF CONTENTS
 
-1. RESET CSS
+1. RESET
 2. TYPOGRAPHY
 3. LAYOUTS
+4. FORMS
 
 */
 
-/* 1. RESET CSS */
+/* 1. RESET */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -91,7 +92,9 @@ p {
 	width: 70%;
 }
 
+/* 4. FORMS */
 
-body {
-	background-color: lightgray;
+button {
+	padding: .5em;
+	background-color: white;
 }
